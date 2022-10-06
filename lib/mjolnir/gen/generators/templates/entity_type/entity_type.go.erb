@@ -1,0 +1,13 @@
+package <%= name %>
+
+type entityType struct{}
+
+func (a entityType) Name() string {
+  return "<%= name %>"
+}
+
+func (a entityType) Create(args map[string]interface{}) map[string]interface{} {
+  return args
+}
+
+var EntityType = entityType{}

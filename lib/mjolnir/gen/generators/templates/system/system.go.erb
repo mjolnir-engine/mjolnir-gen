@@ -1,0 +1,28 @@
+package <%= name %>
+
+type <%= name %> struct{}
+
+func (e system) Name() string {
+  return "<%= name %>"
+}
+
+func (e system) Component() string {
+  return "<%= component %>"
+}
+
+func (e system) Match(key string, value interface{}) bool { return  true }
+
+func (e system) ComponentAdded(_ string, _ string, _ interface{}) error { return nil }
+
+func (e system) ComponentUpdated(_ string, _ string, _ interface{}, _ interface{}) error { return nil }
+
+func (e system) ComponentRemoved(_ string, _ string) error { return nil }
+
+func (e system) MatchingComponentAdded(_ string, _ string, _ interface{}) error { return nil }
+
+func (e system) MatchingComponentUpdated(_ string, _ string, _ interface{}, _ interface{}) error { return nil }
+
+func (e system) MatchingComponentRemoved(_ string, _ string) error { return nil }
+
+var System = system{}
+

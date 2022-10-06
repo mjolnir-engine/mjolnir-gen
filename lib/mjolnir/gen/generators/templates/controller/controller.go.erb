@@ -1,0 +1,19 @@
+package <%= name %>
+
+// controller is the login controller, responsible handling user logins.
+type controller struct{}
+
+var Controller = controller{}
+
+
+func (l controller) Name() string {
+	return "<%= name %>"
+}
+
+func (l controller) Start(_ string) error { return nil }
+
+func (l controller) Resume(_ string) error { return nil }
+
+func (l controller) Stop(_ string) error { return nil }
+
+func (l controller) HandleInput(_ string, _ string) error { return nil }

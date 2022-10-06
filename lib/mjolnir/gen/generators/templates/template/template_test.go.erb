@@ -1,0 +1,22 @@
+package templates
+
+import (
+	 "github.com/stretchr/testify/assert"
+   "testing"
+)
+
+func Test<%= template_name %>_Name(t *testing.T) {
+   assert.Equal(t, "<%= name %>", <%= template_name %>.Name())
+}
+
+func Test<%= template_name %>_Style(t *testing.T) {
+   assert.Equal(t, "default", <%= template_name %>.Style())
+}
+
+func Test<%= template_name %>_Render(t *testing.T) {
+  s, err := <%= template_name %>.Render(nil)
+
+   assert.Equal(t, nil, err)
+
+   assert.Equal(t, "Change me", s)
+}

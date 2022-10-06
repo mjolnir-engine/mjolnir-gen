@@ -1,0 +1,42 @@
+package <%= name %>
+
+import (
+	engineTesting "github.com/mjolnir-mud/engine/pkg/testing"
+	ecsTesting "github.com/mjolnir-mud/engine/plugins/ecs/pkg/testing"
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
+
+func setup() {
+	engineTesting.Setup("world", func() {
+		ecsTesting.Setup()
+	})
+}
+
+func teardown() {
+	ecsTesting.Teardown()
+	engineTesting.Teardown()
+}
+
+func TestCharacter_Name(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Equal(t, "<%= name %>", EntityType.Name())
+}
+
+func TestCharacter_Create(t *testing.T) {
+	setup()
+	defer teardown()
+
+	args := EntityType.Create(map[string]interface{}{})
+
+	assert.Equal(t, map[string]interface{}{}, args)
+}
+
+func TestCharacter_Validate(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Nil(t, EntityType.Validate(map[string]interface{}{}))
+}

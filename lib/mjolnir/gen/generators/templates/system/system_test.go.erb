@@ -1,0 +1,29 @@
+package <%= name %>
+
+import(
+  "testing"
+  engineTesting "github.com/mjolnir-mud/engine/pkg/testing"
+  ecsTesting "github.com/mjolnir-mud/ecs/pkg/testing"
+
+  "github.com/mjolnir-mud/engine"
+  "github.com/stretchr/testify/assert"
+)
+
+func setup() {
+  engineTesting.Setup("world", func() {
+    ecsTesting.Setup()
+  })
+}
+
+func teardown() {
+  ecsTesting.Teardown()
+  engineTesting.Teardown()
+}
+
+func TestSystem_Name(t *testing.T) {
+	assert.Equal(t, "<%= name %>", System.Name())
+}
+
+func TestSystem_Component(t *testing.T) {
+  assert.Equal(t, "<%= name %>", System.Component())
+}

@@ -1,0 +1,57 @@
+package <%= name %>
+
+
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+
+	engineTesting "github.com/mjolnir-mud/engine/pkg/testing"
+	controllersTesting "github.com/mjolnir-mud/engine/plugins/controllers/pkg/testing"
+)
+
+func setup() {
+
+	engineTesting.Setup("world", func() {
+		controllersTesting.Setup()
+	})
+}
+
+func teardown() {
+	controllersTesting.Teardown()
+	engineTesting.Teardown()
+}
+
+func TestController_Name(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Equal(t, "<%= name %>", Controller.Name())
+}
+
+func TestController_Start(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Nil(t, Controller.Start("id"))
+}
+
+func TestController_Resume(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Nil(t, Controller.Resume("id"))
+}
+
+func TestController_Stop(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Nil(t, Controller.Stop("id"))
+}
+
+func TestController_HandleInput(t *testing.T) {
+	setup()
+	defer teardown()
+
+	assert.Nil(t, Controller.HandleInput("id", "input"))
+}

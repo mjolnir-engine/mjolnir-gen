@@ -1,0 +1,19 @@
+package templates
+
+import "fmt"
+
+type <%= struct_name %> struct{}
+
+func (t <%= struct_name %>) Name() string {
+  return "<%= name %>"
+}
+
+func (t <%= struct_name %>) Style() string {
+  return "default"
+}
+
+func (t <%= struct_name %>) Render(_ interface{}) (string, error) {
+  return fmt.Sprint("Change me"), nil
+}
+
+var <%= name.classify %> = &<%= struct_name %>{}
